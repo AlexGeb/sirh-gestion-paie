@@ -20,7 +20,7 @@ public class JeuxDeDonneesTest {
 	private BulletinSalaire bulletin1;
 
 	@Before
-	public void onSetup() {
+	public void onSetup() { 
 		context = new ClassPathXmlApplicationContext("jdd-config.xml");
 		bulletin1 = context.getBean("bulletin1", BulletinSalaire.class);
 	}
