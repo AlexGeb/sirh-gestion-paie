@@ -31,7 +31,8 @@ public class GradeServiceJdbcTemplateTest {
 
 	@Test
 	public void test_GradeService_injection() {
-		assertThat(gradeService).isInstanceOf(GradeService.class);
+		assertThat(gradeService).isNotNull();
+		assertThat(datasource).isNotNull();
 	}
 
 	/**
@@ -53,7 +54,7 @@ public class GradeServiceJdbcTemplateTest {
 		nouveauGrade.setTauxBase(new BigDecimal("11.64"));
 		String monCode = "grade_test";
 		nouveauGrade.setCode(monCode);
-
+   
 		// sauvegarde
 		gradeService.sauvegarder(nouveauGrade);
 		// lister
@@ -89,7 +90,7 @@ public class GradeServiceJdbcTemplateTest {
 	@After
 	public void afterEach() {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(datasource);
-		String sql = "DELETE FROM grade WHERE code LIKE 'grade_test%'";
+		String sql = "DELETE FROM grade WHERE code LIKE 'grade_test%';";
 		jdbcTemplate.update(sql);
 	}
 }
