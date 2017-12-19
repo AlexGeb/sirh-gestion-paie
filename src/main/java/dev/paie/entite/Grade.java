@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Grade {
 	
-	private Integer id;
+	private Integer id; // AUTOINCREMENT in DB
 	private String code;
 	private BigDecimal nbHeuresBase;
 	private BigDecimal tauxBase;
