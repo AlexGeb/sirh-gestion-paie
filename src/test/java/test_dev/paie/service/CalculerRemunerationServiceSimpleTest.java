@@ -1,4 +1,4 @@
-package dev.paie.service;
+package test_dev.paie.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,10 +9,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import dev.paie.config.JeuxDeDonneesConfig;
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.ResultatCalculRemuneration;
+import dev.paie.service.CalculerRemunerationService;
+import test_dev.paie.config.JeuxDeDonneesConfig;
 
 //Sélection des classes de configuration Spring à utiliser lors du test
 @ContextConfiguration(classes = { ServicesConfig.class, JeuxDeDonneesConfig.class })

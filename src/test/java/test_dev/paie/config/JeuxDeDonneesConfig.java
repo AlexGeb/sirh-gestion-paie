@@ -1,4 +1,4 @@
-package dev.paie.config;
+package test_dev.paie.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;

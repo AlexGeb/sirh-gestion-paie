@@ -1,4 +1,4 @@
-package dev.paie.util;
+package test_dev.paie.util;
 
 import static org.assertj.core.api.Assertions.*;
 

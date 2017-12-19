@@ -1,4 +1,4 @@
-package dev.paie.util;
+package test_dev.paie.util;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import dev.paie.util.PaieUtils;
 
 public class PaieUtilsTest {
 	private ClassPathXmlApplicationContext context;

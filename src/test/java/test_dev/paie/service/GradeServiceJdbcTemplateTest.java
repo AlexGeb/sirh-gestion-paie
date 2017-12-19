@@ -1,4 +1,4 @@
-package dev.paie.service;
+package test_dev.paie.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,7 +8,6 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Grade;
+import dev.paie.service.GradeService;
 
 @ContextConfiguration(classes = { ServicesConfig.class })
 @RunWith(SpringRunner.class)
@@ -36,15 +36,12 @@ public class GradeServiceJdbcTemplateTest {
 	}
 
 	/**
-	 * Tests pour sauvegarder, lister, mettreAJour
-	 * 1. creation d'un grade
-	 * 2. sauvegarde du grade
-	 * 3. récupération des grades
-	 * 4. TEST : le grade doit être présent dans la liste
-	 * 5. modification du grade récupéré
-	 * 6. mise à jour dans la db et récupération des grades
-	 * 7. TEST : le nombre de grades doit être inchangé
-	 * 8. TESTs : le grade modifié doit être présent dasn la liste et chacun de ses champs doivent correspondre avec le grade mis à jour
+	 * Tests pour sauvegarder, lister, mettreAJour 1. creation d'un grade 2.
+	 * sauvegarde du grade 3. récupération des grades 4. TEST : le grade doit être
+	 * présent dans la liste 5. modification du grade récupéré 6. mise à jour dans
+	 * la db et récupération des grades 7. TEST : le nombre de grades doit être
+	 * inchangé 8. TESTs : le grade modifié doit être présent dasn la liste et
+	 * chacun de ses champs doivent correspondre avec le grade mis à jour
 	 */
 	@Test
 	public void test_sauvegarder_lister_mettre_a_jour() {
@@ -54,7 +51,7 @@ public class GradeServiceJdbcTemplateTest {
 		nouveauGrade.setTauxBase(new BigDecimal("11.64"));
 		String monCode = "grade_test";
 		nouveauGrade.setCode(monCode);
-   
+
 		// sauvegarde
 		gradeService.sauvegarder(nouveauGrade);
 		// lister
@@ -84,8 +81,8 @@ public class GradeServiceJdbcTemplateTest {
 	}
 
 	/**
-	 * Nettoyage de la base de donnée après chaque test
-	 * => suppression de tout les grades commençant par 'grade_test' dans la table GRADE
+	 * Nettoyage de la base de donnée après chaque test => suppression de tout les
+	 * grades commençant par 'grade_test' dans la table GRADE
 	 */
 	@After
 	public void afterEach() {
