@@ -1,5 +1,7 @@
 package dev.paie.spring;
 
+import java.util.Properties;
+
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
@@ -40,6 +42,9 @@ public class JpaConfig {
 		// alternative au persistence.xml
 		factory.setPackagesToScan("dev.paie.entite");
 		factory.setDataSource(dataSource);
+		Properties jpaProperties = new Properties();
+		jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQL57InnoDBDialect");
+		factory.setJpaProperties(jpaProperties);
 		factory.afterPropertiesSet();
 		return factory.getObject();
 	}

@@ -5,10 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +23,6 @@ public class CotisationServiceJpaTest {
 
 	@Autowired
 	private CotisationService cotisationService;
-	
-	@PersistenceContext
-	private EntityManager em;
 
 	@Test
 	public void test_GradeService_injection() {
@@ -73,10 +66,4 @@ public class CotisationServiceJpaTest {
 		assertThat(maCotiz2.getTauxPatronal()).isEqualTo(new BigDecimal("45.23"));
 		assertThat(maCotiz2.getTauxSalarial()).isEqualTo(new BigDecimal("1.2"));
 	}
-
-	@After
-	public void afterEach() {
-		em.createQuery("DELETE Cotisation c WHERE c.code LIKE 'cotisation_test%'").executeUpdate();
-	}
-
 }

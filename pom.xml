@@ -85,6 +85,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Spring DataJpa -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>

@@ -47,5 +47,8 @@ public class AvantageRepositoryTest {
 		assertThat(monAv2.getCode()).isEqualTo("av_test2");
 		assertThat(monAv2.getMontant()).isEqualTo(new BigDecimal("12.3"));
 		assertThat(monAv2.getNom()).isEqualTo("avantage_de_test2");
+		
+		Avantage monAv3 = avantageRepository.findByCode("av_test2");
+		assertThat(monAv3).isNotNull();
 	}
 }
