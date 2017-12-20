@@ -11,10 +11,18 @@
 		<junit.version>4.12</junit.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<profil>mariaDb</profil>
 	</properties>
+
 
 	<build>
 		<finalName>paie</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -53,13 +61,6 @@
 			<artifactId>spring-jdbc</artifactId>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
-		<dependency>
-			<groupId>org.mariadb.jdbc</groupId>
-			<artifactId>mariadb-java-client</artifactId>
-			<version>1.1.7</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -92,6 +93,17 @@
 			<version>1.11.3.RELEASE</version>
 		</dependency>
 
+		<!-- LOGGER -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.18</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.2</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -105,5 +117,46 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<profiles>
+
+		<profile>
+			<id>h2</id>
+			<properties>
+				<profil>h2</profil>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>com.h2database</groupId>
+					<artifactId>h2</artifactId>
+					<version>1.4.196</version>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
+			<id>mariaDb</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<profil>mariaDb</profil>
+				<jdbc.driver>org.mariadb.jdbc.Driver</jdbc.driver>
+				<jdbc.url>jdbc:mariadb://localhost:3306/sirh_paie</jdbc.url>
+				<jdbc.username>root</jdbc.username>
+				<jdbc.password></jdbc.password>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.mariadb.jdbc</groupId>
+					<artifactId>mariadb-java-client</artifactId>
+					<version>1.1.7</version>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+
+	</profiles>
 
 </project>
