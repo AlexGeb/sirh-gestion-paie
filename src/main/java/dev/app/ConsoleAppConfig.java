@@ -7,12 +7,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
+import dev.paie.config.JeuxDeDonneesConfig;
 import dev.paie.config.ServicesConfig;
 
 @Configuration
-@Import({ ServicesConfig.class })
+@Import({ ServicesConfig.class, JeuxDeDonneesConfig.class })
 @ComponentScan({ "dev.menu" })
-public class AppConfig {
+public class ConsoleAppConfig {
 
 	@Bean
 	public Scanner scanner() {

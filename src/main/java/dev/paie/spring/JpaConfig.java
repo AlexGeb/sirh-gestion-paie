@@ -22,7 +22,7 @@ public class JpaConfig {
 	@Bean
 	public PlatformTransactionManager transactionManager(DataSource dataSource) {
 		JpaTransactionManager txManager = new JpaTransactionManager();
-		txManager.setEntityManagerFactory( entityManagerFactory(dataSource));
+		txManager.setEntityManagerFactory(entityManagerFactory(dataSource));
 		return txManager;
 	}
 
@@ -32,10 +32,10 @@ public class JpaConfig {
 	@Bean
 	public EntityManagerFactory entityManagerFactory(DataSource dataSource) {
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-		vendorAdapter.setGenerateDdl(true);
+		//vendorAdapter.setGenerateDdl(true);
 		//vendorAdapter.
 		// activer les logs SQL
-		//vendorAdapter.setShowSql(true);
+		vendorAdapter.setShowSql(true);
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 		factory.setJpaVendorAdapter(vendorAdapter);
 		// alternative au persistence.xml
@@ -43,10 +43,10 @@ public class JpaConfig {
 		factory.setDataSource(dataSource);
 		Properties jpaProperties = new Properties();
 		jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQL57InnoDBDialect");
+		jpaProperties.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
 		factory.setJpaProperties(jpaProperties);
 		factory.afterPropertiesSet();
 		return factory.getObject();
 	}
-	
-	
+
 }
