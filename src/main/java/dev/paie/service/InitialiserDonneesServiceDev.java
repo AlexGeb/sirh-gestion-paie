@@ -16,6 +16,7 @@ import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
 import dev.paie.entite.Periode;
 import dev.paie.entite.ProfilRemuneration;
+import dev.paie.entite.RemunerationEmploye;
 
 @Service
 public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
@@ -29,7 +30,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 	@Override
 	@Transactional
 	public void initialiser() {
-		Stream.of(Cotisation.class, Grade.class, Entreprise.class, ProfilRemuneration.class)
+		Stream.of(Cotisation.class, Grade.class, Entreprise.class, ProfilRemuneration.class, RemunerationEmploye.class)
 				.flatMap(maClasse -> context.getBeansOfType(maClasse).values().stream()).forEach(bean -> {
 					em.persist(bean);
 				});

@@ -20,7 +20,7 @@ public class PaieUtils {
 	 * @return le nombre formaté
 	 */
 	public String formaterBigDecimal(BigDecimal decimal) {
-		if(decimal==null)
+		if (decimal == null)
 			decimal = new BigDecimal("0.0");
 		DecimalFormat df = new DecimalFormat();
 		// forcer le séparateur "." même sur un poste en français
@@ -30,6 +30,12 @@ public class PaieUtils {
 		df.setMinimumFractionDigits(2);
 		df.setGroupingUsed(false);
 		return df.format(decimal);
+	}
+
+	public String fromCentiemesToPercent(BigDecimal decimal) {
+		if (decimal == null)
+			return null;
+		return formaterBigDecimal(decimal.multiply(new BigDecimal("100")));
 	}
 
 }

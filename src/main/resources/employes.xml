@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- import des configurations de cotisations -->
+	<import resource="classpath:entreprises.xml" />
+	<import resource="classpath:grades.xml" />
+	<import resource="classpath:profils-remuneration.xml" />
+
+	<bean id="employe1" class="dev.paie.entite.RemunerationEmploye">
+		<property name="matricule" value="MA01"></property>
+		<property name="profilRemuneration" ref="profil-technicien"></property>
+		<property name="grade" ref="grade1"></property>
+		<property name="entreprise" ref="entreprise3"></property>
+	</bean>
+
+	<bean id="employe2" class="dev.paie.entite.RemunerationEmploye">
+		<property name="matricule" value="MA02"></property>
+		<property name="profilRemuneration" ref="profil-cadre"></property>
+		<property name="grade" ref="grade2"></property>
+		<property name="entreprise" ref="entreprise1"></property>
+	</bean>
+
+	<bean id="employe3" class="dev.paie.entite.RemunerationEmploye">
+		<property name="matricule" value="MA03"></property>
+		<property name="profilRemuneration" ref="profil-stagiaire"></property>
+		<property name="grade" ref="grade3"></property>
+		<property name="entreprise" ref="entreprise2"></property>
+	</bean>
+
+</beans>
