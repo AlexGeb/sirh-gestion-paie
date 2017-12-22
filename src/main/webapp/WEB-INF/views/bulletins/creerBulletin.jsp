@@ -14,7 +14,7 @@
 					<label for="periode">Periode</label> <select id="periode"
 						name="periode_id">
 						<c:forEach var="periode" items="${periodes}">
-							<option value="${periode.id}">${periode.dateDebut}</option>
+							<option value="${periode.id}">${periode.periodeString}</option>
 						</c:forEach>
 					</select>
 				</div>

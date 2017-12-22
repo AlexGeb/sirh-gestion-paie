@@ -24,7 +24,7 @@
 				<tbody>
 					<c:forEach var="bull" items="${bulletins_resultats}">
 						<tr>
-							<td>${ bull.key.periode.dateDebut }-${ bull.key.periode.dateFin }</td>
+							<td>${ bull.key.periode.periodeString }</td>
 							<td>${ bull.key.remunerationEmploye.matricule }</td>
 							<td>${ bull.value.salaireBrut }</td>
 							<td>${ bull.value.netImposable }</td>
