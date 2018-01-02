@@ -14,9 +14,10 @@ public class ConnexionController {
 		return "connexion";
 	}
 	
+	/*
 	@RequestMapping(method = RequestMethod.GET, path = "/logout")
 	public String logout() {
 		return "redirect:/mvc/connexion";
 	}
-
+*/
 }
