@@ -1,15 +1,9 @@
 package dev.paie.web.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.paie.entite.BulletinSalaire;
-import dev.paie.entite.BulletinVisualisationObject;
-import dev.paie.entite.RemunerationEmploye;
-import dev.paie.entite.ResultatCalculRemuneration;
 import dev.paie.repository.BulletinSalaireRepository;
 import dev.paie.repository.PeriodeRepository;
 import dev.paie.repository.RemunerationEmployeRepository;
@@ -45,6 +36,7 @@ public class BulletinSalaireController {
 	CalculerRemunerationService calculRemuService;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/creer")
+	@Secured({"ROLE_ADMINISTRATEUR"})
 	public ModelAndView creerBulletinSalaire() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/creerBulletin");
@@ -56,6 +48,7 @@ public class BulletinSalaireController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/visualiser/{bulletin_id}")
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
 	public ModelAndView visualiserBulletinSalaire(@PathVariable int bulletin_id) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/visualiserBulletin");
@@ -66,6 +59,7 @@ public class BulletinSalaireController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/creer")
+	@Secured({"ROLE_ADMINISTRATEUR"})
 	public String ajouterBulletinSalaire(@ModelAttribute("bulletinSalaire") BulletinSalaire bulletinSalaire,
 			@RequestParam("employe_id") Integer employe_id, @RequestParam("periode_id") Integer periode_id) {
 		bulletinSalaire.setPeriode(periodeRepo.findOne(periode_id));
@@ -75,6 +69,7 @@ public class BulletinSalaireController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/lister")
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
 	public ModelAndView listerBulletinSalaire() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("bulletins/listerBulletins");

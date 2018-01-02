@@ -10,8 +10,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "dev.paie.web.controller","dev.paie.web.listener" })
-@Import({ ServicesConfig.class, JeuxDeDonneesConfig.class })
+@ComponentScan({ "dev.paie.web.controller", "dev.paie.web.listener" })
+@Import({ ServicesConfig.class, JeuxDeDonneesConfig.class, SecurityConfig.class })
 public class WebAppConfig {
 	@Bean
 	public ViewResolver viewResolver() {

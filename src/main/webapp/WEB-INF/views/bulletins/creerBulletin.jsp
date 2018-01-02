@@ -12,7 +12,7 @@
 			<form:form method="post" modelAttribute="bulletinSalaire">
 				<div class="form-group">
 					<label for="periode">Periode</label> <select id="periode"
-						name="periode_id">
+						name="periode_id">  
 						<c:forEach var="periode" items="${periodes}">
 							<option value="${periode.id}">${periode.periodeString}</option>
 						</c:forEach>
